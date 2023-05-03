@@ -3,6 +3,7 @@
 namespace Tnapf\Driver;
 
 use PDOStatement;
+use Tnapf\Driver\Exceptions\QueryException;
 use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\Interfaces\PreparedQueryInterface;
 use Tnapf\Driver\Interfaces\QueryResponseInterface;
@@ -20,7 +21,11 @@ class PreparedQuery implements PreparedQueryInterface
 
     public function bindValue(string $name, mixed $value): void
     {
-        $this->stmt->bindValue($name, $value);
+        $result = $this->stmt->bindValue($name, $value);
+
+        if ($result === false) {
+            throw new \Exception("Failed to bind value to query");
+        }
     }
 
     public function bindValues(array $values): void
@@ -32,7 +37,17 @@ class PreparedQuery implements PreparedQueryInterface
 
     public function execute(): QueryResponseInterface
     {
-        $this->stmt->execute();
+        $result = $this->stmt->execute();
+
+        if ($result === false) {
+            [$sqlState, $errorCode, $errorMessage] = $this->stmt->errorInfo();
+            throw new QueryException(
+                $this,
+                sprintf("Query failed with error %s: %s", $sqlState, $errorMessage),
+                $errorCode
+            );
+        }
+
         return new QueryResponse($this->stmt);
     }
 }
