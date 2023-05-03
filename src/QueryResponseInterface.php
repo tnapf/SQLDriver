@@ -2,22 +2,23 @@
 
 namespace Tnapf\Driver;
 
-use Tnapf\Driver\Interfaces\Row;
 use PDOStatement;
+use Tnapf\Driver\Interfaces\RowInterface;
 
-class QueryResponse implements Interfaces\QueryResponse
+class QueryResponseInterface implements Interfaces\QueryResponseInterface
 {
     /**
-     * @var Row[]
+     * @var RowInterface[]
      */
     protected array $rows = [];
+
     public function __construct(
         public readonly PDOStatement $stmt,
     ) {
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($rows as $row) {
-            $this->rows[] = new Row($row);
+            $this->rows[] = new RowInterface($row);
         }
     }
 
@@ -30,17 +31,17 @@ class QueryResponse implements Interfaces\QueryResponse
     {
     }
 
-    public function fetchNextRow(int $fetchType = 0): ?Row
+    public function fetchNextRow(int $fetchType = 0): ?RowInterface
     {
         // TODO: Implement fetchNextRow() method.
     }
 
-    public function fetchLastRow(int $fetchType = 0): ?Row
+    public function fetchLastRow(int $fetchType = 0): ?RowInterface
     {
         // TODO: Implement fetchLastRow() method.
     }
 
-    public function fetchFirstRow(int $fetchType = 0): ?Row
+    public function fetchFirstRow(int $fetchType = 0): ?RowInterface
     {
         // TODO: Implement fetchFirstRow() method.
     }

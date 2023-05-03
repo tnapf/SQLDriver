@@ -7,9 +7,9 @@ use Tnapf\Driver\Enums\DatabaseTypes;
 
 interface DriverInterface
 {
-    public function query(string $query): Query;
+    public function query(string $query): QueryInterface;
 
-    public function preparedQuery(string $query): PreparedQuery;
+    public function preparedQuery(string $query): PreparedQueryInterfaceInterface;
 
     public function isConnected(): bool;
 

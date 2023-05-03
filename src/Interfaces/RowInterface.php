@@ -4,7 +4,7 @@ namespace Tnapf\Driver\Interfaces;
 
 use Stringable;
 
-interface Row extends Stringable
+interface RowInterface extends Stringable
 {
     public function getColumns(): array;
     public function getColumn(string $columnName): mixed;

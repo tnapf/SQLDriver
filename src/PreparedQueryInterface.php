@@ -3,9 +3,9 @@
 namespace Tnapf\Driver;
 
 use Tnapf\Driver\Interfaces\DriverInterface;
-use Tnapf\Driver\Interfaces\QueryResponse;
+use Tnapf\Driver\Interfaces\QueryResponseInterface;
 
-class PreparedQuery implements Interfaces\PreparedQuery
+class PreparedQueryInterface implements Interfaces\PreparedQueryInterfaceInterface
 {
     public function __construct(
         public readonly string $query,
@@ -23,7 +23,7 @@ class PreparedQuery implements Interfaces\PreparedQuery
         // TODO: Implement bindValues() method.
     }
 
-    public function execute(): QueryResponse
+    public function execute(): QueryResponseInterface
     {
         // TODO: Implement execute() method.
     }

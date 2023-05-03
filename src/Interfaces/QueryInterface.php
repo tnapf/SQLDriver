@@ -2,8 +2,8 @@
 
 namespace Tnapf\Driver\Interfaces;
 
-interface Query
+interface QueryInterface
 {
     public function __construct(string $query, DriverInterface $driver);
-    public function execute(): QueryResponse;
+    public function execute(): QueryResponseInterface;
 }

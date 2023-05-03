@@ -6,9 +6,9 @@ use PDO;
 use Tnapf\Driver\Enums\DatabaseTypes;
 use Tnapf\Driver\Exceptions\DriverException;
 use Tnapf\Driver\Interfaces\DriverInterface;
-use Tnapf\Driver\PreparedQuery;
-use Tnapf\Driver\Query;
-use Tnapf\Driver\Interfaces\QueryResponse;
+use Tnapf\Driver\PreparedQueryInterface;
+use Tnapf\Driver\QueryInterface;
+use Tnapf\Driver\Interfaces\QueryResponseInterface;
 
 class PDODriver implements DriverInterface
 {
@@ -24,14 +24,14 @@ class PDODriver implements DriverInterface
         $this->connect();
     }
 
-    public function query(string $query): Query
+    public function query(string $query): QueryInterface
     {
-        return new Query($query, $this);
+        return new QueryInterface($query, $this);
     }
 
-    public function preparedQuery(string $query): PreparedQuery
+    public function preparedQuery(string $query): PreparedQueryInterface
     {
-        return new PreparedQuery($query, $this);
+        return new PreparedQueryInterface($query, $this);
     }
 
     public function connect(): void
