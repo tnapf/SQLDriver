@@ -20,7 +20,7 @@ class Row implements RowInterface
     {
         $array = [];
 
-        foreach ($this->rows as $key => $value) {
+        foreach ($this->row as $key => $value) {
             $array[$value] = $key;
         }
 
