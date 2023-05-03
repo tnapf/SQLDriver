@@ -2,8 +2,6 @@
 
 namespace Tnapf\Driver;
 
-use Tnapf\Driver\Enums\DatabaseTypes;
-
 class DsnBuilder
 {
     public const PREFIX_MYSQL = "mysql";
