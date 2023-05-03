@@ -2,10 +2,10 @@
 
 namespace Tnapf\Driver;
 
-use Tnapf\Driver\Row;
 use PDOStatement;
+use Tnapf\Driver\Interfaces\RowInterface;
 
-class QueryResponse implements Interfaces\QueryResponse
+class QueryResponse implements Interfaces\QueryResponseInterface
 {
     /**
      * @var Row[]
