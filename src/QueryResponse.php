@@ -18,7 +18,7 @@ class QueryResponse implements Interfaces\QueryResponseInterface
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($rows as $row) {
-            $this->rows[] = new Row($row);
+            $this->rows[] = new RowInterface($row);
         }
     }
 
@@ -31,17 +31,17 @@ class QueryResponse implements Interfaces\QueryResponseInterface
     {
     }
 
-    public function fetchNextRow(): ?Row
+    public function fetchNextRow(): ?RowInterface
     {
         // TODO: Implement fetchNextRow() method.
     }
 
-    public function fetchLastRow(): ?Row
+    public function fetchLastRow(): ?RowInterface
     {
         // TODO: Implement fetchLastRow() method.
     }
 
-    public function fetchFirstRow(): ?Row
+    public function fetchFirstRow(): ?RowInterface
     {
         // TODO: Implement fetchFirstRow() method.
     }
