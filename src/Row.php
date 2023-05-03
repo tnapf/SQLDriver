@@ -24,8 +24,8 @@ class Row implements Interfaces\Row
         // TODO: Implement getColumn() method.
     }
 
-    public function toArray(): array
+    public function getRaw(): array
     {
-        return $this->row;
+        // TODO: Implement getRaw() method.
     }
 }
