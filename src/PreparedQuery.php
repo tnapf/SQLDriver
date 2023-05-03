@@ -2,30 +2,36 @@
 
 namespace Tnapf\Driver;
 
+use PDOStatement;
 use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\Interfaces\PreparedQueryInterface;
 use Tnapf\Driver\Interfaces\QueryResponseInterface;
 
 class PreparedQuery implements PreparedQueryInterface
 {
+    protected PDOStatement $stmt;
+
     public function __construct(
         public readonly string $query,
         public readonly DriverInterface $driver
     ) {
+        $this->stmt = $this->driver->pdo->prepare($this->query);
     }
 
     public function bindValue(string $name, mixed $value): void
     {
-        // TODO: Implement bindValue() method.
+        $this->stmt->bindValue($name, $value);
     }
 
     public function bindValues(array $values): void
     {
-        // TODO: Implement bindValues() method.
+        foreach ($values as $name => $value) {
+            $this->bindValue($name, $value);
+        }
     }
 
     public function execute(): QueryResponseInterface
     {
-        // TODO: Implement execute() method.
+        return new QueryResponse($this->stmt);
     }
 }
