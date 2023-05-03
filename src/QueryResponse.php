@@ -3,13 +3,16 @@
 namespace Tnapf\Driver;
 
 use PDOStatement;
+use PDO;
+use Tnapf\Driver\Interfaces\QueryResponseInterface;
 
-class QueryResponse implements Interfaces\QueryResponseInterface
+class QueryResponse implements QueryResponseInterface
 {
     /**
      * @var Row[]
      */
     protected array $rows = [];
+    protected int $position = 0;
 
     public function __construct(
         public readonly PDOStatement $stmt,
@@ -28,21 +31,22 @@ class QueryResponse implements Interfaces\QueryResponseInterface
 
     public function fetchRows(): array
     {
+        return $this->rows;
     }
 
     public function fetchNextRow(): ?Row
     {
-        // TODO: Implement fetchNextRow() method.
+        return $this->rows[$this->position++] ?? null;
     }
 
     public function fetchLastRow(): ?Row
     {
-        // TODO: Implement fetchLastRow() method.
+        return $this->rows[count($this) - 1] ?? null;
     }
 
     public function fetchFirstRow(): ?Row
     {
-        // TODO: Implement fetchFirstRow() method.
+        return $this->rows[0] ?? null;
     }
 
     public function getRowCount(): int
@@ -52,6 +56,6 @@ class QueryResponse implements Interfaces\QueryResponseInterface
 
     public function jsonSerialize(): mixed
     {
-        // TODO: Implement jsonSerialize() method.
+        return $this->rows;
     }
 }
