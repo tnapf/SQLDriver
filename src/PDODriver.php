@@ -8,7 +8,7 @@ use Tnapf\Driver\Exceptions\DriverException;
 use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\PreparedQuery;
 use Tnapf\Driver\Query;
-use Tnapf\Driver\Interfaces\QueryResponse;
+use Tnapf\Driver\Interfaces\QueryResponseInterface;
 
 class PDODriver implements DriverInterface
 {

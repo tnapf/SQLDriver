@@ -5,7 +5,7 @@ namespace Tnapf\Driver;
 use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\QueryResponse;
 
-class Query implements Interfaces\Query
+class Query implements Interfaces\QueryInterface
 {
     public function __construct(
         public readonly string $query,
