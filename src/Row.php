@@ -4,27 +4,19 @@ namespace Tnapf\Driver;
 
 class Row implements Interfaces\Row
 {
-    protected array $columns = [];
-    protected array $values = [];
-
     public function __construct(
         protected readonly array $row
     ) {
     }
 
-    public function __toString(): string
+    public function jsonSerialize(): array
     {
-        // TODO: Implement __toString() method.
+        return $this->row;
     }
 
     public function getColumns(): array
     {
-        // TODO: Implement getColumns() method.
-    }
-
-    public function getColumnNames(): array
-    {
-        return
+        return array_keys($this->row);
     }
 
     public function getColumn(string $columnName): mixed
@@ -34,6 +26,6 @@ class Row implements Interfaces\Row
 
     public function toArray(): array
     {
-        // TODO: Implement toArray() method.
+        return $this->row;
     }
 }
