@@ -29,7 +29,7 @@ class Row implements RowInterface
 
     public function getColumn(string $columnName): mixed
     {
-        // TODO: Implement getColumn() method.
+        return $this->row[$columnName] ?? null;
     }
 
     public function getColumnNames(): array
