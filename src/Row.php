@@ -16,7 +16,13 @@ class Row implements Interfaces\RowInterface
 
     public function getColumns(): array
     {
-        return array_keys($this->row);
+        $array = [];
+
+        foreach ($this->rows as $key => $value) {
+            $array[$value] = $key;
+        }
+
+        return $array;
     }
 
     public function getColumn(string $columnName): mixed
@@ -24,8 +30,8 @@ class Row implements Interfaces\RowInterface
         // TODO: Implement getColumn() method.
     }
 
-    public function getRaw(): array
+    public function getColumnNames(): array
     {
-        // TODO: Implement getRaw() method.
+        return array_keys($this->row);
     }
 }
