@@ -28,6 +28,7 @@ class DsnBuilder
     ): self {
         $dsn = new self();
         $dsn->config = compact('host', 'port', 'dbname', 'unix_socket', 'charset');
+        return $dsn;
     }
 
     public static function createPostgresDsn(
