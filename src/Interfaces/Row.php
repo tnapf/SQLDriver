@@ -2,12 +2,13 @@
 
 namespace Tnapf\Driver\Interfaces;
 
-use Stringable;
+use JsonSerializable;
 
-interface Row extends Stringable
+interface Row extends JsonSerializable
 {
     public function getColumns(): array;
+
     public function getColumn(string $columnName): mixed;
-    public function getColumnNames(): array;
-    public function toArray(): array;
+
+    public function getRaw(): array;
 }
