@@ -2,9 +2,9 @@
 
 namespace Tnapf\Driver\Interfaces;
 
-use Stringable;
+use JsonSerializable;
 
-interface RowInterface extends Stringable
+interface RowInterface extends JsonSerializable
 {
     /**
      * Get all columns in the row as an associative array.
@@ -29,9 +29,9 @@ interface RowInterface extends Stringable
     public function getColumnNames(): array;
 
     /**
-     * Convert the row to an associative array.
-     *
-     * @return array An associative array of column names and their corresponding values.
+      * Convert the class to a JSON serializable object.
+      *
+      * @return mixed
      */
-    public function toArray(): array;
+    public function jsonSerialize(): mixed;
 }
