@@ -12,12 +12,11 @@ use Tnapf\Driver\Interfaces\Row;
 interface QueryResponse extends Countable, JsonSerializable
 {
     /**
-     * @param int $type
      * @return Row[]
      */
-    public function fetchRows(int $fetchType = 0): array;
-    public function fetchNextRow(int $fetchType = 0): ?Row;
-    public function fetchLastRow(int $fetchType = 0): ?Row;
-    public function fetchFirstRow(int $fetchType = 0): ?Row;
+    public function fetchRows(): array;
+    public function fetchNextRow(): ?Row;
+    public function fetchLastRow(): ?Row;
+    public function fetchFirstRow(): ?Row;
     public function getRowCount(): int;
 }
