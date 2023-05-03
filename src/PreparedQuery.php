@@ -32,6 +32,7 @@ class PreparedQuery implements PreparedQueryInterface
 
     public function execute(): QueryResponseInterface
     {
+        $this->stmt->execute();
         return new QueryResponse($this->stmt);
     }
 }
