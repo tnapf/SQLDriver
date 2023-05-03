@@ -3,7 +3,6 @@
 namespace Tnapf\Driver;
 
 use PDOStatement;
-use Tnapf\Driver\Interfaces\RowInterface;
 
 class QueryResponse implements Interfaces\QueryResponseInterface
 {
@@ -18,7 +17,7 @@ class QueryResponse implements Interfaces\QueryResponseInterface
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($rows as $row) {
-            $this->rows[] = new RowInterface($row);
+            $this->rows[] = new Row($row);
         }
     }
 
@@ -31,17 +30,17 @@ class QueryResponse implements Interfaces\QueryResponseInterface
     {
     }
 
-    public function fetchNextRow(): ?RowInterface
+    public function fetchNextRow(): ?Row
     {
         // TODO: Implement fetchNextRow() method.
     }
 
-    public function fetchLastRow(): ?RowInterface
+    public function fetchLastRow(): ?Row
     {
         // TODO: Implement fetchLastRow() method.
     }
 
-    public function fetchFirstRow(): ?RowInterface
+    public function fetchFirstRow(): ?Row
     {
         // TODO: Implement fetchFirstRow() method.
     }
