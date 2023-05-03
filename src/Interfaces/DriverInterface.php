@@ -9,7 +9,7 @@ interface DriverInterface
 {
     public function query(string $query): QueryInterface;
 
-    public function preparedQuery(string $query): PreparedQueryInterfaceInterface;
+    public function preparedQuery(string $query): PreparedQueryInterface;
 
     public function isConnected(): bool;
 

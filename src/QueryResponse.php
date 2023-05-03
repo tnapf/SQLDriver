@@ -5,10 +5,10 @@ namespace Tnapf\Driver;
 use PDOStatement;
 use Tnapf\Driver\Interfaces\RowInterface;
 
-class QueryResponseInterface implements Interfaces\QueryResponseInterface
+class QueryResponse implements Interfaces\QueryResponseInterface
 {
     /**
-     * @var RowInterface[]
+     * @var Row[]
      */
     protected array $rows = [];
 

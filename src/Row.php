@@ -2,7 +2,7 @@
 
 namespace Tnapf\Driver;
 
-class RowInterface implements Interfaces\RowInterface
+class Row implements Interfaces\RowInterface
 {
     protected array $columns = [];
     protected array $values = [];
