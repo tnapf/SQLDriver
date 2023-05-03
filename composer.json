@@ -1,11 +1,11 @@
 {
-    "name": "tnapf/package",
+    "name": "tnapf/sqldriver",
     "description": "A package that does something",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Tnapf\\Package\\": "src/"
+            "Tnapf\\Driver\\": "src/"
         }
     },
     "authors": [
@@ -23,5 +23,8 @@
         "csf": "./vendor/bin/phpcbf ./src ./tests --standard=psr12",
         "phpunit": "./vendor/bin/phpunit",
         "phpunit-coverage": "php -d xdebug.mode=coverage ./vendor/bin/phpunit --coverage-html .phpunit.cache/cov-html"
-    }
+    },
+  "require": {
+    "ext-pdo": "*"
+  }
 }
