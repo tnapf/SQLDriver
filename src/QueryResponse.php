@@ -2,7 +2,7 @@
 
 namespace Tnapf\Driver;
 
-use Tnapf\Driver\Interfaces\Row;
+use Tnapf\Driver\Row;
 use PDOStatement;
 
 class QueryResponse implements Interfaces\QueryResponse
@@ -11,6 +11,7 @@ class QueryResponse implements Interfaces\QueryResponse
      * @var Row[]
      */
     protected array $rows = [];
+
     public function __construct(
         public readonly PDOStatement $stmt,
     ) {
@@ -26,21 +27,21 @@ class QueryResponse implements Interfaces\QueryResponse
         return $this->stmt->rowCount();
     }
 
-    public function fetchRows(int $fetchType = 0): array
+    public function fetchRows(): array
     {
     }
 
-    public function fetchNextRow(int $fetchType = 0): ?Row
+    public function fetchNextRow(): ?Row
     {
         // TODO: Implement fetchNextRow() method.
     }
 
-    public function fetchLastRow(int $fetchType = 0): ?Row
+    public function fetchLastRow(): ?Row
     {
         // TODO: Implement fetchLastRow() method.
     }
 
-    public function fetchFirstRow(int $fetchType = 0): ?Row
+    public function fetchFirstRow(): ?Row
     {
         // TODO: Implement fetchFirstRow() method.
     }
