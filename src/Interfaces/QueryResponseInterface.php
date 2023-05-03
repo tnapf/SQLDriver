@@ -10,7 +10,6 @@ interface QueryResponseInterface extends Countable, JsonSerializable
     /**
      * Fetch all rows in the result set.
      *
-     * @param int $fetchType The fetch type to use (e.g., FetchTypes::ASSOC or FetchTypes::NUM).
      * @return RowInterface[] An array of RowInterface objects representing the fetched rows.
      */
     public function fetchRows(): array;
@@ -18,7 +17,6 @@ interface QueryResponseInterface extends Countable, JsonSerializable
     /**
      * Fetch the next row in the result set.
      *
-     * @param int $fetchType The fetch type to use (e.g., FetchTypes::ASSOC or FetchTypes::NUM).
      * @return RowInterface|null A RowInterface object representing the next row, or null if there are no more rows.
      */
     public function fetchNextRow(): ?RowInterface;
@@ -26,7 +24,6 @@ interface QueryResponseInterface extends Countable, JsonSerializable
     /**
      * Fetch the last row in the result set.
      *
-     * @param int $fetchType The fetch type to use (e.g., FetchTypes::ASSOC or FetchTypes::NUM).
      * @return RowInterface|null A RowInterface object representing the last row, or null if the result set is empty.
      */
     public function fetchLastRow(): ?RowInterface;
@@ -34,7 +31,6 @@ interface QueryResponseInterface extends Countable, JsonSerializable
     /**
      * Fetch the first row in the result set.
      *
-     * @param int $fetchType The fetch type to use (e.g., FetchTypes::ASSOC or FetchTypes::NUM).
      * @return RowInterface|null A RowInterface object representing the first row, or null if the result set is empty.
      */
     public function fetchFirstRow(): ?RowInterface;
