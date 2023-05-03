@@ -2,22 +2,48 @@
 
 namespace Tnapf\Driver\Interfaces;
 
-use ArrayAccess;
 use Countable;
-use IteratorAggregate;
 use JsonSerializable;
 use Tnapf\Driver\Enums\FetchTypes;
-use Tnapf\Driver\Interfaces\RowInterface;
 
 interface QueryResponseInterface extends Countable, JsonSerializable
 {
     /**
-     * @param int $fetchType
-     * @return RowInterface[]
+     * Fetch all rows in the result set.
+     *
+     * @param int $fetchType The fetch type to use (e.g., FetchTypes::ASSOC or FetchTypes::NUM).
+     * @return RowInterface[] An array of RowInterface objects representing the fetched rows.
      */
     public function fetchRows(int $fetchType = 0): array;
+
+    /**
+     * Fetch the next row in the result set.
+     *
+     * @param int $fetchType The fetch type to use (e.g., FetchTypes::ASSOC or FetchTypes::NUM).
+     * @return RowInterface|null A RowInterface object representing the next row, or null if there are no more rows.
+     */
     public function fetchNextRow(int $fetchType = 0): ?RowInterface;
+
+    /**
+     * Fetch the last row in the result set.
+     *
+     * @param int $fetchType The fetch type to use (e.g., FetchTypes::ASSOC or FetchTypes::NUM).
+     * @return RowInterface|null A RowInterface object representing the last row, or null if the result set is empty.
+     */
     public function fetchLastRow(int $fetchType = 0): ?RowInterface;
+
+    /**
+     * Fetch the first row in the result set.
+     *
+     * @param int $fetchType The fetch type to use (e.g., FetchTypes::ASSOC or FetchTypes::NUM).
+     * @return RowInterface|null A RowInterface object representing the first row, or null if the result set is empty.
+     */
     public function fetchFirstRow(int $fetchType = 0): ?RowInterface;
+
+    /**
+     * Get the number of rows in the result set.
+     *
+     * @return int The number of rows in the result set.
+     */
     public function getRowCount(): int;
 }
