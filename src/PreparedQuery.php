@@ -10,8 +10,7 @@ class PreparedQuery implements Interfaces\PreparedQuery
     public function __construct(
         public readonly string $query,
         public readonly DriverInterface $driver
-    )
-    {
+    ) {
     }
 
     public function bindValue(string $name, mixed $value): void

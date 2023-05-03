@@ -10,7 +10,6 @@ class Row implements Interfaces\Row
     public function __construct(
         protected readonly array $row
     ) {
-
     }
 
     public function __toString(): string

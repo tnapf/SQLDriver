@@ -22,24 +22,22 @@ class DsnBuilder
     protected array $config = [];
 
     public static function createMySQLDsn(
-        string  $dbname,
-        string  $host = "127.0.0.1",
-        int     $port = 3306,
+        string $dbname,
+        string $host = "127.0.0.1",
+        int $port = 3306,
         ?string $unix_socket = null,
         ?string $charset = null
-    ): self
-    {
+    ): self {
         $dsn = new self();
         $dsn->config = compact('host', 'port', 'dbname', 'unix_socket', 'charset');
     }
 
     public static function createPostgresDsn(
-        string  $dbname,
-        string  $host = "127.0.0.1",
-        int     $port = 5432,
+        string $dbname,
+        string $host = "127.0.0.1",
+        int $port = 5432,
         ?string $sslMode = null
-    ): self
-    {
+    ): self {
         $dsn = new self();
         $dsn->config = compact('host', 'port', 'dbname', 'sslMode');
         $dsn->prefix = self::PREFIX_POSTGRES;

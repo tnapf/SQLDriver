@@ -28,7 +28,6 @@ class QueryResponse implements Interfaces\QueryResponse
 
     public function fetchRows(int $fetchType = 0): array
     {
-
     }
 
     public function fetchNextRow(int $fetchType = 0): ?Row

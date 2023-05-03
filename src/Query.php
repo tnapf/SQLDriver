@@ -10,8 +10,7 @@ class Query implements Interfaces\Query
     public function __construct(
         public readonly string $query,
         public readonly DriverInterface $driver
-    )
-    {
+    ) {
     }
 
     public function execute(): QueryResponse

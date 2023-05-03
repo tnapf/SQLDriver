@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Tnapf\Driver;
+
 use PHPUnit\Framework\TestCase;
 
 class ExampleTest extends TestCase
