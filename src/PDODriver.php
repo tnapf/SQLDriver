@@ -6,6 +6,8 @@ use PDO;
 use PDOException;
 use Tnapf\Driver\Exceptions\DriverException;
 use Tnapf\Driver\Interfaces\DriverInterface;
+use Tnapf\Driver\Interfaces\PreparedQueryInterface;
+use Tnapf\Driver\Interfaces\QueryInterface;
 use Tnapf\Driver\PreparedQuery;
 use Tnapf\Driver\Query;
 use Tnapf\Driver\Interfaces\QueryResponseInterface;
@@ -27,12 +29,12 @@ class PDODriver implements DriverInterface
         $this->connect();
     }
 
-    public function query(string $query): Query
+    public function query(string $query): QueryInterface
     {
         return new Query($query, $this);
     }
 
-    public function preparedQuery(string $query): PreparedQuery
+    public function preparedQuery(string $query): PreparedQueryInterface
     {
         return new PreparedQuery($query, $this);
     }

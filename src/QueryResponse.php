@@ -5,6 +5,7 @@ namespace Tnapf\Driver;
 use PDOStatement;
 use PDO;
 use Tnapf\Driver\Interfaces\QueryResponseInterface;
+use Tnapf\Driver\Interfaces\RowInterface;
 
 class QueryResponse implements QueryResponseInterface
 {
@@ -34,17 +35,17 @@ class QueryResponse implements QueryResponseInterface
         return $this->rows;
     }
 
-    public function fetchNextRow(): ?Row
+    public function fetchNextRow(): ?RowInterface
     {
         return $this->rows[$this->position++] ?? null;
     }
 
-    public function fetchLastRow(): ?Row
+    public function fetchLastRow(): ?RowInterface
     {
         return $this->rows[count($this) - 1] ?? null;
     }
 
-    public function fetchFirstRow(): ?Row
+    public function fetchFirstRow(): ?RowInterface
     {
         return $this->rows[0] ?? null;
     }
