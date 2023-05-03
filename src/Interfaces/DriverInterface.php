@@ -2,8 +2,6 @@
 
 namespace Tnapf\Driver\Interfaces;
 
-use Tnapf\Driver\Enums\DatabaseTypes;
-
 interface DriverInterface
 {
     /**

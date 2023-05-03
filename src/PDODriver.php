@@ -3,7 +3,6 @@
 namespace Tnapf\Driver;
 
 use PDO;
-use Tnapf\Driver\Enums\DatabaseTypes;
 use Tnapf\Driver\Exceptions\DriverException;
 use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\PreparedQuery;

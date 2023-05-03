@@ -2,7 +2,9 @@
 
 namespace Tnapf\Driver;
 
-class Row implements Interfaces\RowInterface
+use Tnapf\Driver\Interfaces\RowInterface;
+
+class Row implements RowInterface
 {
     public function __construct(
         protected readonly array $row

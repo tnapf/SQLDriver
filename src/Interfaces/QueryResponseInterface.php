@@ -4,7 +4,6 @@ namespace Tnapf\Driver\Interfaces;
 
 use Countable;
 use JsonSerializable;
-use Tnapf\Driver\Enums\FetchTypes;
 
 interface QueryResponseInterface extends Countable, JsonSerializable
 {
