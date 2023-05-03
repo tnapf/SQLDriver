@@ -78,4 +78,9 @@ class DsnBuilder
     {
         return $this->buildDsn($this->prefix, $this->config);
     }
+
+    public static function new(): self
+    {
+        return new self();
+    }
 }
