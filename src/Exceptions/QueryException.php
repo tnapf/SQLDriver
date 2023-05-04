@@ -8,7 +8,7 @@ use Tnapf\Driver\Interfaces\QueryInterface;
 class QueryException extends DriverException
 {
     public function __construct(
-        protected QueryInterface $query,
+        public readonly QueryInterface $query,
         string $message = "",
         int $code = 0,
         ?Throwable $previous = null
