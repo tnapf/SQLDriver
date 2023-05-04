@@ -24,7 +24,12 @@ class PreparedQuery implements PreparedQueryInterface
         $result = $this->stmt->bindValue($name, $value);
 
         if ($result === false) {
-            throw new \Exception("Failed to bind value to query");
+            [$sqlState, $errorCode, $errorMessage] = $this->stmt->errorInfo();
+            throw new QueryException(
+                $this,
+                sprintf("Failed to bind value to query. Error %s: %s", $sqlState, $errorMessage),
+                $errorCode
+            );
         }
     }
 
