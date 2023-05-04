@@ -15,9 +15,4 @@ class QueryException extends DriverException
     ) {
         parent::__construct($message, $code, $previous);
     }
-
-    public function getQuery(): QueryInterface
-    {
-        return $this->query;
-    }
 }
