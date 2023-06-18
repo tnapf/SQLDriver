@@ -43,6 +43,7 @@ class PDODriver implements DriverInterface
     {
         if ($this->isConnected()) {
             trigger_error("Already connected to database", E_USER_WARNING);
+            return;
         }
 
         try {
