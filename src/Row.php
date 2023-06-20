@@ -21,7 +21,7 @@ class Row implements RowInterface
         $array = [];
 
         foreach ($this->row as $key => $value) {
-            $array[$value] = $key;
+            $array[$key] = $value;
         }
 
         return $array;
