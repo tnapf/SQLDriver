@@ -65,7 +65,7 @@ class PDODriver implements DriverInterface
     /**
      * @throws DriverException
      */
-    public function begin(): bool
+    public function begin(): void
     {
         try {
             if (!$this->pdo->beginTransaction()) {
@@ -79,7 +79,7 @@ class PDODriver implements DriverInterface
     /**
      * @throws DriverException
      */
-    public function commit(): bool
+    public function commit(): void
     {
         try {
             if (!$this->pdo->commit()) {
@@ -93,7 +93,7 @@ class PDODriver implements DriverInterface
     /**
      * @throws DriverException
      */
-    public function rollback(): bool
+    public function rollback(): void
     {
         try {
             if (!$this->pdo->rollBack()) {
