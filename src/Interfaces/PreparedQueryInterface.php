@@ -2,6 +2,12 @@
 
 namespace Tnapf\Driver\Interfaces;
 
+/**
+ * Represents a prepared query.
+ *
+ * @package Tnapf\Driver\Interfaces
+ * @extends QueryInterface
+ */
 interface PreparedQueryInterface extends QueryInterface
 {
     /**

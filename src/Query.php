@@ -7,14 +7,33 @@ use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\Interfaces\QueryInterface;
 use Tnapf\Driver\Interfaces\QueryResponseInterface;
 
+/**
+ * Represents a query.
+ *
+ * @implements QueryInterface
+ * @package Tnapf\Driver
+ */
 class Query implements QueryInterface
 {
+    /**
+     * Creates a new Query.
+     *
+     * @param string $query
+     * @param DriverInterface $driver
+     */
     public function __construct(
-        public readonly string $query,
+        public readonly string          $query,
         public readonly DriverInterface $driver
-    ) {
+    )
+    {
     }
 
+    /**
+     * Executes the query and returns the response.
+     *
+     * @return QueryResponseInterface
+     * @throws QueryException
+     */
     public function execute(): QueryResponseInterface
     {
         $result = $this->driver->pdo->query($this->query);
