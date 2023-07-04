@@ -6,6 +6,11 @@ use Tnapf\Driver\Interfaces\RowInterface;
 
 class Row implements RowInterface
 {
+    public static function create(array $row): Row
+    {
+        return new static($row);
+    }
+
     public function __construct(
         protected readonly array $row
     ) {
@@ -13,18 +18,12 @@ class Row implements RowInterface
 
     public function jsonSerialize(): array
     {
-        return $this->row;
+        return $this->getColumns();
     }
 
     public function getColumns(): array
     {
-        $array = [];
-
-        foreach ($this->row as $key => $value) {
-            $array[$key] = $value;
-        }
-
-        return $array;
+        return $this->row;
     }
 
     public function getColumn(string $columnName): mixed
