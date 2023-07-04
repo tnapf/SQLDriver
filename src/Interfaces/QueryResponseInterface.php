@@ -5,6 +5,13 @@ namespace Tnapf\Driver\Interfaces;
 use Countable;
 use JsonSerializable;
 
+/**
+ * Represents a response of a query.
+ *
+ * @package Tnapf\Driver\Interfaces
+ * @extends Countable
+ * @extends JsonSerializable
+ */
 interface QueryResponseInterface extends Countable, JsonSerializable
 {
     /**

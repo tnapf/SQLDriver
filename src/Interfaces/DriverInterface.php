@@ -2,6 +2,11 @@
 
 namespace Tnapf\Driver\Interfaces;
 
+/**
+ * Represents a driver.
+ *
+ * @package Tnapf\Driver\Interfaces
+ */
 interface DriverInterface
 {
     /**

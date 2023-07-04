@@ -4,6 +4,12 @@ namespace Tnapf\Driver\Interfaces;
 
 use JsonSerializable;
 
+/**
+ * Represents a row in a result set.
+ *
+ * @package Tnapf\Driver\Interfaces
+ * @extends JsonSerializable
+ */
 interface RowInterface extends JsonSerializable
 {
     /**
@@ -29,9 +35,9 @@ interface RowInterface extends JsonSerializable
     public function getColumnNames(): array;
 
     /**
-      * Convert the class to a JSON serializable object.
-      *
-      * @return mixed
+     * Convert the class to a JSON serializable object.
+     *
+     * @return mixed
      */
     public function jsonSerialize(): mixed;
 }

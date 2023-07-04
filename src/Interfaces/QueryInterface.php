@@ -2,6 +2,11 @@
 
 namespace Tnapf\Driver\Interfaces;
 
+/**
+ * Represents a query.
+ *
+ * @package Tnapf\Driver\Interfaces
+ */
 interface QueryInterface
 {
     /**
