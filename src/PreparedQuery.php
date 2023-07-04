@@ -2,6 +2,8 @@
 
 namespace Tnapf\Driver;
 
+use Exception;
+use PDOException;
 use PDOStatement;
 use Tnapf\Driver\Exceptions\QueryException;
 use Tnapf\Driver\Interfaces\DriverInterface;
@@ -19,9 +21,16 @@ class PreparedQuery implements PreparedQueryInterface
         $this->stmt = $this->driver->pdo->prepare($this->query);
     }
 
+    /**
+     * @throws QueryException
+     */
     public function bindValue(string $name, mixed $value): void
     {
-        $result = $this->stmt->bindValue($name, $value);
+        try {
+            $result = $this->stmt->bindValue($name, $value);
+        } catch (PDOException $e) {
+            throw new QueryException($this, $e->getMessage(), $e->getCode(), $e);
+        }
 
         if ($result === false) {
             [$sqlState, $errorCode, $errorMessage] = $this->stmt->errorInfo();
@@ -33,6 +42,9 @@ class PreparedQuery implements PreparedQueryInterface
         }
     }
 
+    /**
+     * @throws QueryException
+     */
     public function bindValues(array $values): void
     {
         foreach ($values as $name => $value) {
@@ -40,9 +52,16 @@ class PreparedQuery implements PreparedQueryInterface
         }
     }
 
+    /**
+     * @throws QueryException
+     */
     public function execute(): QueryResponseInterface
     {
-        $result = $this->stmt->execute();
+        try {
+            $result = $this->stmt->execute();
+        } catch (PDOException $e) {
+            throw new QueryException($this, $e->getMessage(), $e->getCode(), $e);
+        }
 
         if ($result === false) {
             [$sqlState, $errorCode, $errorMessage] = $this->stmt->errorInfo();

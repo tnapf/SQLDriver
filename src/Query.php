@@ -2,6 +2,8 @@
 
 namespace Tnapf\Driver;
 
+use Exception;
+use PDOException;
 use Tnapf\Driver\Exceptions\QueryException;
 use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\Interfaces\QueryInterface;
@@ -15,9 +17,16 @@ class Query implements QueryInterface
     ) {
     }
 
+    /**
+     * @throws QueryException
+     */
     public function execute(): QueryResponseInterface
     {
-        $result = $this->driver->pdo->query($this->query);
+        try {
+            $result = $this->driver->pdo->query($this->query);
+        } catch (PDOException $e) {
+            throw new QueryException($this, $e->getMessage(), $e->getCode(), $e);
+        }
 
         if ($result === false) {
             [$sqlState, $errorCode, $errorMessage] = $this->driver->pdo->errorInfo();
