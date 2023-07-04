@@ -9,7 +9,6 @@ use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\Interfaces\PreparedQueryInterface;
 use Tnapf\Driver\Interfaces\QueryInterface;
 
-
 class PDODriver implements DriverInterface
 {
     public readonly PDO $pdo;
