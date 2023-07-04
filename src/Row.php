@@ -14,8 +14,7 @@ class Row implements RowInterface
 {
     public function __construct(
         protected readonly array $row
-    )
-    {
+    ) {
     }
 
     /**

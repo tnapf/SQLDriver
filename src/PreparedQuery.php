@@ -31,10 +31,9 @@ class PreparedQuery implements PreparedQueryInterface
      * @param DriverInterface $driver
      */
     public function __construct(
-        public readonly string          $query,
+        public readonly string $query,
         public readonly DriverInterface $driver
-    )
-    {
+    ) {
         $this->stmt = $this->driver->pdo->prepare($this->query);
     }
 

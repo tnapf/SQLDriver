@@ -56,13 +56,12 @@ class DsnBuilder
      * @return self
      */
     public static function createMySQLDsn(
-        string      $dbname,
+        string $dbname,
         string|null $host = null,
-        int|null    $port = null,
+        int|null $port = null,
         string|null $unix_socket = null,
         string|null $charset = null
-    ): self
-    {
+    ): self {
         $port ??= 3306;
         $host ??= "127.0.0.1";
         $dsn = new self();
@@ -80,12 +79,11 @@ class DsnBuilder
      * @return self
      */
     public static function createPostgresDsn(
-        string      $dbname,
+        string $dbname,
         string|null $host = null,
-        int|null    $port = null,
+        int|null $port = null,
         string|null $sslMode = null
-    ): self
-    {
+    ): self {
         $port ??= 5432;
         $host ??= "127.0.0.1";
         $dsn = new self();
