@@ -48,9 +48,8 @@ class PDODriver implements DriverInterface
         protected string $dsn,
         protected string $username,
         protected string $password,
-        protected array  $options = []
-    )
-    {
+        protected array $options = []
+    ) {
         $this->connect();
     }
 

@@ -23,11 +23,10 @@ class QueryException extends DriverException
      */
     public function __construct(
         public readonly QueryInterface $query,
-        string                         $message = "",
-        int                            $code = 0,
-        Throwable|null                 $previous = null
-    )
-    {
+        string $message = "",
+        int $code = 0,
+        Throwable|null $previous = null
+    ) {
         parent::__construct($message, $code, $previous);
     }
 }

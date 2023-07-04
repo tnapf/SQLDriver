@@ -34,8 +34,7 @@ class QueryResponse implements QueryResponseInterface
      */
     public function __construct(
         public readonly PDOStatement $stmt,
-    )
-    {
+    ) {
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         foreach ($rows as $row) {
