@@ -4,6 +4,7 @@ namespace Tests\Tnapf\Driver;
 
 use PHPUnit\Framework\TestCase;
 use Tnapf\Driver\DsnBuilder;
+use Tnapf\Driver\DsnPrefix;
 
 class DsnBuilderTest extends TestCase
 {

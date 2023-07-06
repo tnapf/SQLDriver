@@ -8,9 +8,6 @@ use Tnapf\Driver\Exceptions\DriverException;
 use Tnapf\Driver\Interfaces\DriverInterface;
 use Tnapf\Driver\Interfaces\PreparedQueryInterface;
 use Tnapf\Driver\Interfaces\QueryInterface;
-use Tnapf\Driver\PreparedQuery;
-use Tnapf\Driver\Query;
-use Tnapf\Driver\Interfaces\QueryResponseInterface;
 
 class PDODriver implements DriverInterface
 {
@@ -39,6 +36,9 @@ class PDODriver implements DriverInterface
         return new PreparedQuery($query, $this);
     }
 
+    /**
+     * @throws DriverException
+     */
     public function connect(): void
     {
         if ($this->isConnected()) {

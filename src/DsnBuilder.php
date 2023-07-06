@@ -4,19 +4,52 @@ namespace Tnapf\Driver;
 
 class DsnBuilder
 {
-    public const PREFIX_MYSQL = "mysql";
-    public const PREFIX_POSTGRES = "pgsql";
-    public const PREFIX_CUBRID = "cubrid";
-    public const PREFIX_ORACLE = "oci";
-    public const PREFIX_SQLITE = "sqlite";
-    public const PREFIX_ODBC = "odbc";
-    public const PREFIX_IBM = "ibm";
-    public const PREFIX_MS_SQL = "sqlsrv";
-    public const PREFIX_MS_SQL_LIB = "sybase";
-    public const PREFIX_INFORMIX = "informix";
-    public const PREFIX_FIREBIRD = "firebird";
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_MYSQL = DsnPrefix::MYSQL;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_POSTGRES = DsnPrefix::POSTGRES;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_CUBRID = DsnPrefix::CUBRID;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_ORACLE = DsnPrefix::ORACLE;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_SQLITE = DsnPrefix::SQLITE;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_ODBC = DsnPrefix::ODBC;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_IBM = DsnPrefix::IBM;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_MS_SQL = DsnPrefix::MS_SQL;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_MS_SQL_LIB = DsnPrefix::MS_SQL_LIB;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_INFORMIX = DsnPrefix::INFORMIX;
+    /**
+     * @deprecated use {@link DsnPrefix} cases instead.
+     */
+    public const PREFIX_FIREBIRD = DsnPrefix::FIREBIRD;
 
-    protected string $prefix = self::PREFIX_MYSQL;
+    protected DsnPrefix $prefix = DsnPrefix::MYSQL;
     protected array $config = [];
 
     public static function createMySQLDsn(
@@ -39,12 +72,16 @@ class DsnBuilder
     ): self {
         $dsn = new self();
         $dsn->config = compact('host', 'port', 'dbname', 'sslMode');
-        $dsn->prefix = self::PREFIX_POSTGRES;
+        $dsn->prefix = DsnPrefix::POSTGRES;
         return $dsn;
     }
 
-    public function setPrefix(string $prefix): self
+    public function setPrefix(string|DsnPrefix $prefix): self
     {
+        if (is_string($prefix)) {
+            $prefix = DsnPrefix::from($prefix);
+        }
+
         $this->prefix = $prefix;
         return $this;
     }
@@ -60,9 +97,13 @@ class DsnBuilder
         return $this->config[$prop] ?? null;
     }
 
-    public static function buildDsn(string $prefix, array $props): string
+    public static function buildDsn(string|DsnPrefix $prefix, array $props): string
     {
-        $dsn = "{$prefix}:";
+        if (is_string($prefix)) {
+            $prefix = DsnPrefix::from($prefix);
+        }
+
+        $dsn = "{$prefix->value}:";
         foreach ($props as $name => $value) {
             if ($value === null) {
                 continue;
@@ -76,7 +117,7 @@ class DsnBuilder
 
     public function __toString(): string
     {
-        return $this->buildDsn($this->prefix, $this->config);
+        return static::buildDsn($this->prefix->value, $this->config);
     }
 
     public static function new(): self
