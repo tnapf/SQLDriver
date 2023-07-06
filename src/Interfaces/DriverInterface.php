@@ -2,6 +2,8 @@
 
 namespace Tnapf\Driver\Interfaces;
 
+use Tnapf\Driver\Exceptions\DriverException;
+
 interface DriverInterface
 {
     /**
@@ -34,4 +36,32 @@ interface DriverInterface
      * Disconnect the driver from the database.
      */
     public function disconnect(): void;
+
+    /**
+     * Begins a transactions.
+     *
+     * Some DBMS may create implicit COMMIT on DML queries.
+     *
+     * @throws DriverException on failure.
+     */
+    public function begin(): void;
+
+    /**
+     * Rolls back a transaction.
+     *
+     * @throws DriverException on failure.
+     */
+    public function rollback(): void;
+
+    /**
+     * Commits a transaction.
+     *
+     * @throws DriverException on failure.
+     */
+    public function commit(): void;
+
+    /**
+     * Returns whether a transaction is active.
+     */
+    public function inTransaction(): bool;
 }

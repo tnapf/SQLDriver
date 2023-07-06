@@ -12,7 +12,6 @@ use Tnapf\Driver\Interfaces\QueryInterface;
 class PDODriver implements DriverInterface
 {
     public readonly PDO $pdo;
-    protected static self $instance;
 
     /**
      * @throws DriverException
@@ -49,7 +48,7 @@ class PDODriver implements DriverInterface
         try {
             $this->pdo = new PDO($this->dsn, $this->username, $this->password, $this->options);
         } catch (PDOException $e) {
-            throw new DriverException($e->getMessage(), $e->getCode());
+            throw DriverException::createFromPdo($e);
         }
     }
 
@@ -61,5 +60,52 @@ class PDODriver implements DriverInterface
     public function isConnected(): bool
     {
         return isset($this->pdo);
+    }
+
+    /**
+     * @throws DriverException
+     */
+    public function begin(): void
+    {
+        try {
+            if (!$this->pdo->beginTransaction()) {
+                throw new DriverException('Failed to begin transaction.');
+            }
+        } catch (PDOException $e) {
+            throw DriverException::createFromPdo($e);
+        }
+    }
+
+    /**
+     * @throws DriverException
+     */
+    public function commit(): void
+    {
+        try {
+            if (!$this->pdo->commit()) {
+                throw new DriverException('Failed to commit transaction.');
+            }
+        } catch (PDOException $e) {
+            throw DriverException::createFromPdo($e);
+        }
+    }
+
+    /**
+     * @throws DriverException
+     */
+    public function rollback(): void
+    {
+        try {
+            if (!$this->pdo->rollBack()) {
+                throw new DriverException('Failed to rollback transaction.');
+            }
+        } catch (PDOException $e) {
+            throw DriverException::createFromPdo($e);
+        }
+    }
+
+    public function inTransaction(): bool
+    {
+        return $this->pdo->inTransaction();
     }
 }
